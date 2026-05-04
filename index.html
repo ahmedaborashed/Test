@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Judran Group</title>
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: url('bac.jpg') no-repeat center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Overlay */
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(12px);
+  background: rgba(0,0,0,0.7);
+}
+
+/* Container */
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+  z-index: 2;
+  width: 90%;
+  max-width: 450px;
+}
+
+/* Title */
+h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  margin-bottom: 40px;
+  opacity: 0.8;
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Button Base */
+.btn {
+  padding: 14px;
+  border-radius: 15px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: 0.3s;
+}
+
+/* Login */
+.login {
+  background: linear-gradient(45deg, orange, #ff5e00);
+  box-shadow: 0 0 15px rgba(255,94,0,0.7);
+}
+
+.login:hover {
+  transform: scale(1.05);
+}
+
+/* View */
+.view {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid white;
+}
+
+/* Facebook */
+.fb {
+  background: #1877f2;
+}
+
+.fb:hover {
+  box-shadow: 0 0 20px #1877f2;
+}
+
+/* Call */
+.call {
+  background: #28a745;
+}
+
+.call:hover {
+  box-shadow: 0 0 20px #28a745;
+}
+
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 18px; /* كبر الخط */
+  font-weight: bold; /* Bold */
+  color: white; /* لون أبيض */
+  background: rgba(0,0,0,0.8);
+  padding: 12px;
+  letter-spacing: 1px; /* يخلي شكله شيك */
+  text-shadow: 0 0 10px rgba(255,255,255,0.7);
+}
+
+/* Language */
+.lang {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.lang button {
+  background: rgba(0,0,0,0.5);
+  border: 1px solid white;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media(max-width:600px){
+  h1 { font-size: 28px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<div class="lang">
+  <button onclick="toggleLang()">AR / EN</button>
+</div>
+
+<div class="container">
+
+  <h1 id="title">Judran Group</h1>
+  <div class="subtitle" id="subtitle">Interior and Exterior Design</div>
+
+  <div class="buttons">
+
+    <button class="btn login" onclick="location.href='login.html'" id="loginBtn">
+      <i class="fa-solid fa-right-to-bracket"></i> Login
+    </button>
+
+    <button class="btn view" id="projectsBtn">
+      <i class="fa-solid fa-eye"></i> View Work
+    </button>
+
+    <button class="btn fb" onclick="window.open('https://www.facebook.com/share/1X4Xf1Chr5/')">
+      <i class="fab fa-facebook-f"></i> Facebook
+    </button>
+
+    <button id="callBtn" class="btn call" onclick="window.location.href='tel:+201008009351'">
+        <i class="fa-solid fa-phone"></i> Call Now
+    </button>
+
+  </div>
+
+</div>
+
+<div class="footer" id="footer">
+  Under supervision of Eng. Mohamed Massaad | 01008009351
+</div>
+
+<script>
+let isArabic = true;
+
+function applyLang() {
+  if (isArabic) {
+    document.getElementById("title").innerText = "جدران جروب";
+    document.getElementById("subtitle").innerText = "تشطيبات داخلية وخارجية";
+
+    document.getElementById("loginBtn").innerHTML =
+      '<i class="fa-solid fa-right-to-bracket"></i> تسجيل دخول';
+
+    document.getElementById("projectsBtn").innerHTML =
+      '<i class="fa-solid fa-eye"></i> عرض الشغل';
+
+    document.getElementById("callBtn").innerHTML =
+      '<i class="fa-solid fa-phone"></i> اتصل الآن';
+
+    document.getElementById("footer").innerText =
+      "تحت اشراف بشمهندس محمد مسعد | 01008009351";
+
+    document.body.dir = "rtl";
+
+  } else {
+    document.getElementById("title").innerText = "Judran Group";
+    document.getElementById("subtitle").innerText = "Interior and Exterior Design";
+
+    document.getElementById("loginBtn").innerHTML =
+      '<i class="fa-solid fa-right-to-bracket"></i> Login';
+
+    document.getElementById("projectsBtn").innerHTML =
+      '<i class="fa-solid fa-eye"></i> View Work';
+
+    document.getElementById("callBtn").innerHTML =
+      '<i class="fa-solid fa-phone"></i> Call Now';
+
+    document.getElementById("footer").innerText =
+      "Under supervision of Eng. Mohamed Massaad | 01008009351";
+
+    document.body.dir = "ltr";
+  }
+}
+
+function toggleLang() {
+  isArabic = !isArabic;
+  applyLang();
+}
+
+/* تشغيل اللغة أول ما الصفحة تفتح */
+applyLang();
+</script>
+
+</body>
+</html>
